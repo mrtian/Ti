@@ -1,0 +1,22 @@
+{
+  "name": "ti",
+  "version": "1.0.0",
+  "description": "A simple MVC framework for node web server.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node sample/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mrtian/Ti.git"
+  },
+  "keywords": [
+    "MVC",
+    "node",
+    "Ti",
+    "ti",
+    "webserver"
+  ],
+  "author": "mt",
+  "license": "MIT"
+}
