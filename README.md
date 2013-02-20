@@ -123,6 +123,7 @@ template.closeTag = "}>" ;// You custom closeTag put here.
 &lt;%=include('a.tpl',data)%&gt;
 </pre>
 ###template plugin:
+####create a template plugin
 <pre>
 var template = require('ti').template;
 //define a template plugin
@@ -132,7 +133,7 @@ template.plugin('escape',function(str,type){
 	return str;
 });
 </pre>
-//use a plugin in xxx.tpl
+use plugin
 <pre>
 &lt;p&gt;&lt;%=title|escape:"html"%&gt;&lt;/h1&gt;
 </pre>
