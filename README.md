@@ -4,6 +4,8 @@ It provides the basic development framework and some related components, includi
 
 ## Install
     npm install Ti
+## Sample
+	node ./sample/test.js
 ## Document
 
 Application's document path
