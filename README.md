@@ -39,10 +39,12 @@ var app = new App({
 	controllerPath:productPath+"/controller",
 	//configure default controller name
 	defaultController:'site',
-	//配置路由规则
+	//route config
 	routes:{
 		'p-':"product/detail",//'p-','controller/action'
 	},
+	//port
+	port:5927,
 	//configure route start sep
 	baseUriIndex:0,
 	//configure template path
@@ -54,9 +56,9 @@ var app = new App({
 //app start
 app.start();
 </pre>
-			
-###Model
+#####then,open browse and view: http://127.0.0.1:5927	
 
+###Model
 <pre>
 //path:model/product.js
 //demo for product
