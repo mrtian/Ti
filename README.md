@@ -1,4 +1,4 @@
-## Ti - a short description
+## Ti
 Ti is a MVC web application server framework for [node.js](http://nodejs.org).
 It provides the basic development framework and some related components, including libraries and tools. 
 
