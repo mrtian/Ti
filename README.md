@@ -133,13 +133,13 @@ template.plugin('escape',function(str,type){
 </pre>
 //use a plugin in xxx.tpl
 <pre>
-&lt;p&gt;&lt;%title|escape:"html"%&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;%=title|escape:"html"%&gt;&lt;/h1&gt;
 </pre>
 ####some default plugin:
-escape: escape tpl var for html or url :    
+<b>escape</b>: escape tpl var for html or url :    
 
-default: set a default value for tpl var;    
+<b>default</b>: set a default value for tpl var;    
 
-truncate: truncate tpl var ;    
+<b>truncate</b>: truncate tpl var ;    
 
 <b>Enjoy.</b>
