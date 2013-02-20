@@ -133,9 +133,9 @@ template.plugin('escape',function(str,type){
 	return str;
 });
 </pre>
-######use plugin
+#####use plugin
 <pre>
-&lt;p&gt;&lt;%=title|escape:"html"%&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;%=title|escape:"html"%&gt;&lt;/p&gt;
 </pre>
 ####some default plugin:
 <b>escape</b>: escape tpl var for html or url :    
