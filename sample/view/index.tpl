@@ -50,20 +50,20 @@
 		width:90%;
 	}
 </style>
-<h1>MT - webserver MVC framework for <a href="http://www.nodejs.org" target="_blank"><img src="http://nodejs.org/images/logo-light.png" title="node"/></a></h1>
+<h1>Ti - A webserver MVC framework for <a href="http://www.nodejs.org" target="_blank">Nodejs</a></h1>
 
 <div class="qt-grid">
 	<%=include('inc/sidebar.tpl')%>
 	<div class="main">
 		<h2 id="p-0">Intruduction</h2>
-		<p>MT is a MVC web application server framework for node.<br/>
+		<p>Ti is a MVC web application server framework for node.<br/>
 It provides the basic development framework and some related components, including libraries and tools. </p>
 		<h2 id="p-1">Fauture</h2>
 		<p>It provides the basic development framework and some related components, including libraries and tools.</p>
 		<h2 id="p-2">Install</h2>
 		<p>
 			<pre>
-npm install mt</pre>
+npm install ti</pre>
 		</p>
 		<h2 id="p-3">Document</h2>
 		<h3>Application's document path</h3>
@@ -92,7 +92,7 @@ npm install mt</pre>
 			<pre>
 
 //get application
-var App = require('mt').application;
+var App = require('ti').application;
 
 //definne product path;
 var productPath = process.cwd();
@@ -102,9 +102,9 @@ var app = new App({
 	controllerPath:productPath+"/controller",
 	//configure default controller name
 	defaultController:'site',
-	//configure routes 
+	//配置路由规则
 	routes:{
-		'p-<id:\\d+>':"product/detail"
+		'p-<id:\\d+>':"product/detail",//'p-<id:\\d+>','controller/action'
 	},
 	//configure route start sep
 	baseUriIndex:0,
@@ -118,5 +118,106 @@ var app = new App({
 app.start();
 			</pre>
 		</p>
+		<h3 id="model">Model</h3>
+		<p>
+<pre>
+
+//path:model/product.js
+//demo for product
+module.exports = {
+	getItem:function(id){
+		//code for getItem
+		return {
+			id:id,
+			title:"Demo for product",
+			content:"Demo for product content"
+		}
+	},
+	getList:function(){
+		//code for getList
+	}
+
+}
+</pre>
+
+		</p>
+
+		<h3 id="controller">Controller</h3>
+		<p>
+<pre>
+
+//demo for ProductController
+//path: controller/product.js
+
+var Controller = require('ti').Controller;
+//exports
+module.exports = new Controller({
+	detailAction:function(req,res){
+		var id = req.params.id,
+			productModel = require('model/product'),
+			item = productModel.getItem(id);
+
+		this.display('test.tpl',item);
+	}		
+});
+</pre>
+		</p>
+		<h3>View</h3>
+<p><pre>
+
+&lt;!DOCTYPE&gt;
+&lt;head&gt;
+	&lt;title>Ti-Demo&lt;/title&gt;
+&lt;/head&gt;
+&lt;html&gt;
+&lt;body&gt;
+	&lt;h1&gt;&lt;%=title%&gt;&lt;/h1&gt;
+	&lt;p&gt;&lt;%=content%&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+</pre>
+openTag is : <b>&lt;%</b>  <br/>
+closeTag is : <b>%&gt;</b> <br/>
+
+You can modify it like this:
+
+<pre>
+
+var template = require('ti').template;
+
+template.openTag = "<{" ; // You custom openTag put here.
+template.closeTag = "}>" ;// You custom closeTag put here.
+
+</pre>
+template plugin:
+<pre>
+
+var template = require('ti').template;
+//define a template plugin
+template.plugin('escape',function(str,type){
+	//code for plugin
+	//need return what u want;
+	return str;
+});
+
+//use a plugin in xxx.tpl
+&lt;p&gt;&lt;%title|escape:"html"%&gt;&lt;/h1&gt;
+</pre>
+some default plugin:<br><br/>
+
+escape: escape tpl var for html or url :<br/><br/>
+default: set a default value for tpl var;<br><br/>
+truncate: truncate tpl var ;
+
+
+
+
+
+</p>
+
+<h4>Enjoy.</h4>
+
+
 	</div>
 </div>

@@ -27,7 +27,7 @@ Application's document path
 
 <pre>
 //get application
-var App = require('Ti').application;
+var App = require('ti').application;
 
 //definne product path;
 var productPath = process.cwd();
@@ -37,9 +37,9 @@ var app = new App({
 	controllerPath:productPath+"/controller",
 	//configure default controller name
 	defaultController:'site',
-	//configure routes 
+	//配置路由规则
 	routes:{
-		'p-':"product/detail"
+		'p-':"product/detail",//'p-','controller/action'
 	},
 	//configure route start sep
 	baseUriIndex:0,
@@ -52,3 +52,92 @@ var app = new App({
 //app start
 app.start();
 </pre>
+			
+###Model
+
+<pre>
+//path:model/product.js
+//demo for product
+module.exports = {
+	getItem:function(id){
+		//code for getItem
+		return {
+			id:id,
+			title:"Demo for product",
+			content:"Demo for product content"
+		}
+	},
+	getList:function(){
+		//code for getList
+	}
+
+}
+</pre>
+
+###Controller
+
+<pre>
+//demo for ProductController
+//path: controller/product.js
+
+var Controller = require('ti').Controller;
+//exports
+module.exports = new Controller({
+	detailAction:function(req,res){
+		var id = req.params.id,
+			productModel = require('model/product'),
+			item = productModel.getItem(id);
+
+		this.display('test.tpl',item);
+	}		
+});
+</pre>
+###View
+<pre>
+&lt;!DOCTYPE&gt;
+&lt;head&gt;
+	&lt;title>Ti-Demo&lt;/title&gt;
+&lt;/head&gt;
+&lt;html&gt;
+&lt;body&gt;
+	&lt;h1&gt;&lt;%=title%&gt;&lt;/h1&gt;
+	&lt;p&gt;&lt;%=content%&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+####openTag is : <% 
+####closeTag is : %> 
+You can modify it like this:
+<pre>
+var template = require('ti').template;
+
+template.openTag = "<{" ; // You custom openTag put here.
+template.closeTag = "}>" ;// You custom closeTag put here.
+</pre>
+####include a tpl
+<pre>
+&lt;%=include('a.tpl',data)%&gt;
+</pre>
+###template plugin:
+<pre>
+var template = require('ti').template;
+//define a template plugin
+template.plugin('escape',function(str,type){
+	//code for plugin
+	//need return what u want;
+	return str;
+});
+</pre>
+//use a plugin in xxx.tpl
+<pre>
+&lt;p&gt;&lt;%title|escape:"html"%&gt;&lt;/h1&gt;
+</pre>
+####some default plugin:
+escape: escape tpl var for html or url :    
+
+default: set a default value for tpl var;    
+
+truncate: truncate tpl var ;    
+
+<b>Enjoy.</b>

@@ -1,4 +1,4 @@
-var Controller = require('mt').Controller;
+var Controller = require('ti').Controller;
 
 //exports
 module.exports = new Controller({

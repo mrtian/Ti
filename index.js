@@ -84,7 +84,6 @@ var Class = require('./lib/Class'),
                 Controller.request = req;
                 Controller.response = res;
 
-
                 var urlObj = $url.parse(req.url), 
                     url = '';
 
@@ -94,6 +93,7 @@ var Class = require('./lib/Class'),
                 //获取正确的pathname
                 if(opt.baseUriIndex)
                     url = url.split(opt.routeSep).slice(opt.baseUriIndex);
+
 
                 self.fire('routerStartup',req,res,self.route);
                 //解析路由
@@ -133,5 +133,6 @@ var Class = require('./lib/Class'),
 module.exports = {
     application:App,
     Controller:Controller,
-    Class:Class
+    Class:Class,
+    template:require('./lib/template')
 };

@@ -1,7 +1,7 @@
 /*
 * 静态文件处理action
 */
-var Controller = require('mt').Controller,
+var Controller = require('ti').Controller,
 	fs = require('fs'),
 	$url = require('url'),
 	path_join = require('path').join,
@@ -17,6 +17,7 @@ var Controller = require('mt').Controller,
 		'ico':"image/ico",
 		//file
 		'html': 'text/html',
+		'htm':'text/html',
 		'css': 'text/css',
 		'js': 'application/x-javascript'
 	};

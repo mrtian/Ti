@@ -1,4 +1,4 @@
-var App = require('mt').application,
+var App = require('ti').application,
 	//定义目录
 	productPath = process.cwd();
 
@@ -8,8 +8,9 @@ var app = new App({
 	routes:{
 		'p-<id:\\d+>':"product/detail",
 		'static/<path:.*>':"static/index",
-		'favicon.ico':"static/index"
+		'favicon.ico':"static/favicon.ico"
 	},
+	// defaultAction:'index',
 	baseUriIndex:0,
 	viewPath:productPath+'/view',
 	templatePluginPath:productPath+"/plugins/view"
