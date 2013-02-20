@@ -55,8 +55,7 @@ var app = new App({
 
 //app start
 app.start();
-</pre>
-#####then,open browse and view: http://127.0.0.1:5927	
+</pre>	
 
 ###Model
 <pre>
@@ -144,4 +143,5 @@ template.plugin('escape',function(str,type){
 
 <b>truncate</b>: truncate tpl var ;    
 
+#####then,open browse and view: http://127.0.0.1:5927
 <b>Enjoy.</b>
