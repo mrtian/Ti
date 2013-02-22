@@ -146,3 +146,7 @@ template.plugin('escape',function(str,type){
 
 #####then,open browse and view: http://127.0.0.1:5927
 <b>Enjoy.</b>
+
+##中文介绍在这里： 
+http://www.ue7.cn/blog/2013/02/22/nodejs-mvc-ti/
+
